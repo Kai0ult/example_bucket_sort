@@ -43,6 +43,6 @@ def bucket_sort(arr, num_buckets=10):
     return sorted_arr
 
 
-array = [random.randint(0, 10) for _ in range(20)]
+array = [random.randint(0, 2000000) for _ in range(2000000)]
 print(" Array original:", array)
 sorted_array = bucket_sort(array)
