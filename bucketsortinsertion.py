@@ -1,4 +1,6 @@
 import random
+import time
+from datetime import datetime
 
 
 def insertion_sort(arr):
@@ -10,7 +12,7 @@ def insertion_sort(arr):
             arr[j + 1] = arr[j]
             j -= 1
         arr[j + 1] = key
-    print(f"   - Balde ordenado: {arr}")
+    # print(f"   - Balde ordenado: {arr}")
     return arr
 
 
@@ -21,28 +23,30 @@ def bucket_sort(arr, num_buckets=10):
     min_value, max_value = min(arr), max(arr)
     bucket_range = (max_value - min_value) // num_buckets + 1
 
-    print(
-        f"\n Min: {min_value}, Max: {max_value}, Intervalo por balde: {bucket_range}")
-
     buckets = [[] for _ in range(num_buckets)]
 
-    print("\n Distribuindo elementos nos baldes:")
+    # print("\n Distribuindo elementos nos baldes:")
     for num in arr:
         index = (num - min_value) // bucket_range
         buckets[index].append(num)
-
-    for i, bucket in enumerate(buckets):
-        print(f"   Balde {i}: {bucket}")
 
     sorted_arr = []
     for i, bucket in enumerate(buckets):
         sorted_bucket = insertion_sort(bucket)
         sorted_arr.extend(sorted_bucket)
 
-    print("\n Array final ordenado:", sorted_arr)
+    print("Array final ordenado:", sorted_arr)
     return sorted_arr
 
 
-array = [random.randint(0, 2000000) for _ in range(2000000)]
-print(" Array original:", array)
+array = [random.randint(0, 9223372036854775807) for _ in range(200000)]
+# print(" Array original:", array)
+
+start_time = time.time()
 sorted_array = bucket_sort(array)
+end_time = time.time()
+
+time_seg = datetime.fromtimestamp(end_time - start_time)
+
+print(time_seg.strftime('%M:%S'))
+print(f"Ordenação concluída em {end_time - start_time:.5f} segundos!")
