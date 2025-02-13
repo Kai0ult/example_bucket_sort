@@ -48,7 +48,7 @@ def bucket_sort(array, num_buckets=10):
     return sorted_array
 
 
-array = [random.randint(0, 9223372036854775807) for _ in range(200000)]
+array = random.sample(range(9223372036854775807), 200000)
 
 start_time = time.time()
 sorted_array = bucket_sort(array)

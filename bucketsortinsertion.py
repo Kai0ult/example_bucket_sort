@@ -12,7 +12,7 @@ def insertion_sort(arr):
             arr[j + 1] = arr[j]
             j -= 1
         arr[j + 1] = key
-    # print(f"   - Balde ordenado: {arr}")
+    print(f"   - Balde ordenado: {arr}") #Comentar
     return arr
 
 
@@ -25,7 +25,7 @@ def bucket_sort(arr, num_buckets=10):
 
     buckets = [[] for _ in range(num_buckets)]
 
-    # print("\n Distribuindo elementos nos baldes:")
+    print("\n Distribuindo elementos nos baldes:") #Comentar
     for num in arr:
         index = (num - min_value) // bucket_range
         buckets[index].append(num)
@@ -39,8 +39,8 @@ def bucket_sort(arr, num_buckets=10):
     return sorted_arr
 
 
-array = [random.randint(0, 9223372036854775807) for _ in range(200000)]
-# print(" Array original:", array)
+array = random.sample(range(9223372036854775807), 200000)
+print(" Array original:", array) #Comentar
 
 start_time = time.time()
 sorted_array = bucket_sort(array)
